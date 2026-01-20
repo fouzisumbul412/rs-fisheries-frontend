@@ -12,102 +12,167 @@ export interface Fish {
 export const fishData: Fish[] = [
   {
     id: "1",
-    name: "Atlantic Salmon",
+    name: "Grass Carp",
     shortCode: "RF-001",
-    image: "https://images.unsplash.com/photo-1485962398705-ef6a13c41e8f?w=400&h=300&fit=crop",
-    tags: ["Popular", "Premium"],
-    commonUse: "Grilling, Sushi, Pan-searing",
-    availableAs: ["Whole", "Fillet", "Frozen", "Fresh"],
-    description: "Rich in omega-3, firm texture, versatile for various preparations"
+    image:
+      "src/assets/Fishes/CG.webp",
+    tags: ["Freshwater", "Popular"],
+    commonUse: "Curries, Fry, Grilling",
+    availableAs: ["Whole", "Cut Pieces", "Fresh"],
+    description: "Mild-flavored freshwater fish commonly used in Indian cooking."
   },
   {
     id: "2",
-    name: "Yellowfin Tuna",
+    name: "Grass Carp Medium",
     shortCode: "RF-002",
-    image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400&h=300&fit=crop",
-    tags: ["Popular", "Premium"],
-    commonUse: "Sashimi, Grilling, Steak",
-    availableAs: ["Whole", "Loin", "Steak", "Fresh", "Frozen"],
-    description: "Lean protein, mild flavor, excellent for high-end preparations"
+    image:
+      "src/assets/Fishes/MGC.png",
+    tags: ["Freshwater"],
+    commonUse: "Curries, Fry",
+    availableAs: ["Whole", "Cut Pieces"],
+    description: "Medium-sized grass carp with firm flesh and balanced taste."
   },
   {
     id: "3",
-    name: "Sea Bass",
+    name: "Katla",
     shortCode: "RF-003",
-    image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop",
-    tags: ["Premium"],
-    commonUse: "Pan-frying, Grilling, Baking",
-    availableAs: ["Whole", "Fillet", "Fresh", "Frozen"],
-    description: "Delicate white flesh, buttery texture, restaurant favorite"
+    image:
+      "src/assets/Fishes/Katla.avif",
+    tags: ["High Demand"],
+    commonUse: "Curries, Traditional Dishes",
+    availableAs: ["Whole", "Steaks", "Fresh"],
+    description: "Popular Indian major carp with rich flavor and soft texture."
   },
   {
     id: "4",
-    name: "King Prawns",
+    name: "Katla Medium",
     shortCode: "RF-004",
-    image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=300&fit=crop",
-    tags: ["Popular", "High Demand"],
-    commonUse: "Grilling, Stir-fry, Curries",
-    availableAs: ["Whole", "Peeled", "Deveined", "Fresh", "Frozen"],
-    description: "Sweet flavor, firm texture, versatile cooking applications"
+    image:
+      "src/assets/Fishes/mkatla.png",
+    tags: ["Popular"],
+    commonUse: "Curries, Fry",
+    availableAs: ["Cut Pieces", "Fresh"],
+    description: "Medium-sized Katla ideal for daily home cooking."
   },
   {
     id: "5",
-    name: "Mackerel",
+    name: "Mrigal Carp",
     shortCode: "RF-005",
-    image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=300&fit=crop",
-    tags: ["Popular"],
-    commonUse: "Grilling, Smoking, Curries",
-    availableAs: ["Whole", "Fillet", "Fresh", "Frozen"],
-    description: "Rich in omega-3, strong flavor, affordable option"
+    image:
+      "src/assets/Fishes/MC.png",
+    tags: ["Freshwater"],
+    commonUse: "Curries, Light Fry",
+    availableAs: ["Whole", "Cut Pieces"],
+    description: "Lean freshwater carp with subtle taste."
   },
   {
     id: "6",
-    name: "Red Snapper",
+    name: "Medium Rohu Carp",
     shortCode: "RF-006",
-    image: "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=400&h=300&fit=crop",
-    tags: ["Premium"],
-    commonUse: "Grilling, Baking, Steaming",
-    availableAs: ["Whole", "Fillet", "Fresh"],
-    description: "Moist, sweet flesh, excellent for whole fish presentations"
+    image:
+      "src/assets/Fishes/MRC.png",
+    tags: ["Popular"],
+    commonUse: "Curries, Fry",
+    availableAs: ["Steaks", "Fresh"],
+    description: "Most loved Indian carp, soft flesh with excellent flavor."
   },
   {
     id: "7",
-    name: "Squid",
+    name: "Prawn Medium",
     shortCode: "RF-007",
-    image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=400&h=300&fit=crop",
+    image:
+      "src/assets/Fishes/PM.webp",
     tags: ["High Demand"],
-    commonUse: "Frying, Grilling, Stir-fry",
-    availableAs: ["Whole", "Cleaned", "Rings", "Fresh", "Frozen"],
-    description: "Tender when cooked properly, popular for appetizers"
+    commonUse: "Curries, Fry, Stir-fry",
+    availableAs: ["Whole", "Cleaned", "Fresh", "Frozen"],
+    description: "Medium-sized prawns perfect for everyday seafood dishes."
   },
   {
     id: "8",
-    name: "Lobster",
+    name: "Pangasius",
     shortCode: "RF-008",
-    image: "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=400&h=300&fit=crop",
-    tags: ["Premium", "Luxury"],
-    commonUse: "Grilling, Steaming, Boiling",
-    availableAs: ["Whole", "Tail", "Fresh", "Frozen"],
-    description: "Premium seafood, sweet meat, special occasion favorite"
+    image:
+      "src/assets/Fishes/Pangasius.png",
+    tags: ["Boneless"],
+    commonUse: "Fillet Fry, Grilling",
+    availableAs: ["Fillet", "Frozen"],
+    description: "Soft boneless fish with mild taste, easy to cook."
   },
   {
     id: "9",
-    name: "Cod",
+    name: "Roop Chand",
     shortCode: "RF-009",
-    image: "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=400&h=300&fit=crop",
-    tags: ["Popular"],
-    commonUse: "Frying, Baking, Fish & Chips",
-    availableAs: ["Fillet", "Fresh", "Frozen"],
-    description: "Mild flavor, flaky texture, versatile white fish"
+    image:
+      "src/assets/Fishes/RC.png",
+    tags: ["Premium"],
+    commonUse: "Fry, Shallow Fry",
+    availableAs: ["Whole", "Cleaned"],
+    description: "Popular table fish with soft flesh and rich flavor."
   },
   {
     id: "10",
-    name: "Mussels",
+    name: "Rohu",
     shortCode: "RF-010",
-    image: "https://images.unsplash.com/photo-1508736793122-f516e3ba5569?w=400&h=300&fit=crop",
+    image:
+      "src/assets/Fishes/r.jpg",
     tags: ["Popular"],
-    commonUse: "Steaming, Soups, Pasta",
-    availableAs: ["Fresh", "Frozen", "Half-shell"],
-    description: "Sustainable choice, rich flavor, quick cooking"
+    commonUse: "Curries, Fry",
+    availableAs: ["Whole", "Steaks"],
+    description: "Classic freshwater fish widely consumed across India."
+  },
+  {
+    id: "11",
+    name: "Tilapia Medium",
+    shortCode: "RF-011",
+    image:
+      "src/assets/Fishes/TM.png",
+    tags: ["Farmed"],
+    commonUse: "Grilling, Fry",
+    availableAs: ["Whole", "Fillet"],
+    description: "Mild-flavored fish with firm white flesh."
+  },
+  {
+    id: "12",
+    name: "Tilapia Small",
+    shortCode: "RF-012",
+    image:
+      "src/assets/Fishes/TS.png",
+    tags: ["Budget"],
+    commonUse: "Fry",
+    availableAs: ["Whole"],
+    description: "Small tilapia ideal for crispy fry dishes."
+  },
+  {
+    id: "13",
+    name: "Vannamei Prawn",
+    shortCode: "RF-013",
+    image:
+      "src/assets/Fishes/VP.png",
+    tags: ["Export Quality", "Premium"],
+    commonUse: "Curries, Fry, Grill",
+    availableAs: ["Whole", "Peeled", "Deveined", "Frozen"],
+    description: "High-quality prawns widely used in hotels and exports."
+  },
+  {
+    id: "14",
+    name: "Vietnam Rohu",
+    shortCode: "RF-014",
+    image:
+      "src/assets/Fishes/VR.png",
+    tags: ["Imported"],
+    commonUse: "Curries",
+    availableAs: ["Cut Pieces", "Frozen"],
+    description: "Imported rohu variety with consistent size and texture."
+  },
+  {
+    id: "15",
+    name: "White Prawn",
+    shortCode: "RF-015",
+    image:
+      "src/assets/Fishes/WP.png",
+    tags: ["Premium"],
+    commonUse: "Fry, Curries, Continental",
+    availableAs: ["Whole", "Cleaned", "Frozen"],
+    description: "Sweet-tasting white prawns with firm texture."
   }
 ];

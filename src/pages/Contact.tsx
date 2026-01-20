@@ -6,14 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
   email: z.string().email("Please enter a valid email address").max(255),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -29,13 +39,41 @@ const Contact = () => {
       message: "",
     },
   });
+  const onSubmit = async (values: FormValues) => {
+    try {
+      const payload = {
+        type: "contact",
+        name: values.name,
+        email: values.email,
+        message: values.message,
+      };
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Contact form submission:", data);
-    setIsSubmitted(true);
-    toast.success("Message sent! We'll respond to you shortly.");
-    form.reset();
-    setTimeout(() => setIsSubmitted(false), 3000);
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzVgE87L0JjYTBCl8O_tLAlt9dSVAb9oDqa_EIi3nbfM2A_uaka5JGmp0SrJ-eWhdgLDA/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+      if (!response.ok) throw new Error(`Server responded ${response.status}`);
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Message sent successfully!");
+        setIsSubmitted(true);
+        // form.reset() if you want
+      } else {
+        toast.error(result.error || "Something went wrong");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to send message");
+    }
   };
 
   return (
@@ -64,9 +102,14 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-2">Call us directly</p>
-                  <a href="tel:+15551234567" className="text-foreground hover:text-primary font-medium">
-                    +1 (555) 123-4567
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Call us directly
+                  </p>
+                  <a
+                    href="tel:+15551234567"
+                    className="text-foreground hover:text-primary font-medium"
+                  >
+                    9494288997, 9440011704
                   </a>
                 </CardContent>
               </Card>
@@ -79,9 +122,14 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-2">Send us a message</p>
-                  <a href="mailto:contact@rsfisheries.com" className="text-foreground hover:text-primary font-medium break-all">
-                    contact@rsfisheries.com
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Send us a message
+                  </p>
+                  <a
+                    href="mailto:contact@rsfisheries.com"
+                    className="text-foreground hover:text-primary font-medium break-all"
+                  >
+                    n.vamsikiran4@gmail.com
                   </a>
                 </CardContent>
               </Card>
@@ -94,10 +142,13 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-2">Visit our facility</p>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    ViP Hills, 100 feet Road,
+                  </p>
                   <p className="text-foreground font-medium">
-                    123 Harbor Way<br />
-                    Coastal City, CC 12345
+                    3rd floor, Above Varun Bajaj showroom,
+                    <br />
+                    Madhapur, Hyderabad 500081
                   </p>
                 </CardContent>
               </Card>
@@ -110,9 +161,17 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm space-y-1">
-                  <p><span className="font-medium">Monday - Friday:</span> 6:00 AM - 6:00 PM</p>
-                  <p><span className="font-medium">Saturday:</span> 6:00 AM - 2:00 PM</p>
-                  <p><span className="font-medium">Sunday:</span> Closed</p>
+                  <p>
+                    <span className="font-medium">Monday - Friday:</span> 6:00
+                    AM - 6:00 PM
+                  </p>
+                  <p>
+                    <span className="font-medium">Saturday:</span> 6:00 AM -
+                    2:00 PM
+                  </p>
+                  <p>
+                    <span className="font-medium">Sunday:</span> Closed
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -131,12 +190,16 @@ const Contact = () => {
                       </div>
                       <h3 className="text-xl font-semibold">Message Sent!</h3>
                       <p className="text-muted-foreground">
-                        Thank you for contacting us. We'll get back to you shortly.
+                        Thank you for contacting us. We'll get back to you
+                        shortly.
                       </p>
                     </div>
                   ) : (
                     <Form {...form}>
-                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-6"
+                      >
                         <FormField
                           control={form.control}
                           name="name"
@@ -158,7 +221,11 @@ const Contact = () => {
                             <FormItem>
                               <FormLabel>Email *</FormLabel>
                               <FormControl>
-                                <Input type="email" placeholder="your.email@example.com" {...field} />
+                                <Input
+                                  type="email"
+                                  placeholder="your.email@example.com"
+                                  {...field}
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -172,7 +239,7 @@ const Contact = () => {
                             <FormItem>
                               <FormLabel>Message *</FormLabel>
                               <FormControl>
-                                <Textarea 
+                                <Textarea
                                   placeholder="How can we help you?"
                                   className="min-h-[150px]"
                                   {...field}
@@ -189,19 +256,6 @@ const Contact = () => {
                       </form>
                     </Form>
                   )}
-                </CardContent>
-              </Card>
-
-              {/* Map Placeholder */}
-              <Card className="mt-6">
-                <CardContent className="p-0">
-                  <div className="w-full h-64 bg-muted flex items-center justify-center rounded-lg">
-                    <div className="text-center space-y-2">
-                      <MapPin className="h-12 w-12 text-muted-foreground mx-auto" />
-                      <p className="text-muted-foreground">Map location placeholder</p>
-                      <p className="text-sm text-muted-foreground">123 Harbor Way, Coastal City</p>
-                    </div>
-                  </div>
                 </CardContent>
               </Card>
             </div>

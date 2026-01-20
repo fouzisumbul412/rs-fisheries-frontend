@@ -1,5 +1,11 @@
 import { Fish } from "@/data/fishData";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useRef, useState } from "react";
 
@@ -19,41 +25,42 @@ const FishCard = ({ fish }: FishCardProps) => {
           observer.disconnect();
         }
       },
-      {
-        threshold: 0.1,
-        rootMargin: "50px",
-      }
+      { threshold: 0.1, rootMargin: "50px" },
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
+    if (cardRef.current) observer.observe(cardRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <Card 
+    <Card
       ref={cardRef}
-      className={`overflow-hidden hover:shadow-lg transition-all duration-500 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`h-[420px] flex flex-col overflow-hidden transition-all duration-500
+    hover:shadow-lg
+    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+  `}
     >
-      <div className="aspect-video overflow-hidden">
+      {/* Image */}
+      <div className="h-[200px] w-full overflow-hidden shrink-0">
         <img
           src={fish.image}
           alt={fish.name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="h-full w-full object-cover"
         />
       </div>
-      <CardHeader>
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="text-lg">{fish.name}</CardTitle>
-            <CardDescription className="font-mono text-xs">{fish.shortCode}</CardDescription>
+
+      {/* Header */}
+      <CardHeader className="pb-2">
+        <div className="flex justify-between gap-3">
+          <div className="min-w-0">
+            <CardTitle className="text-lg line-clamp-1">{fish.name}</CardTitle>
+            <CardDescription className="text-xs font-mono line-clamp-1">
+              {fish.shortCode}
+            </CardDescription>
           </div>
-          <div className="flex flex-wrap gap-1 justify-end">
-            {fish.tags.map((tag) => (
+
+          <div className="flex flex-wrap gap-1 max-w-[110px] justify-end">
+            {fish.tags.slice(0, 2).map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs">
                 {tag}
               </Badge>
@@ -61,14 +68,21 @@ const FishCard = ({ fish }: FishCardProps) => {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-2">
+
+      {/* Content */}
+      <CardContent className="mt-auto space-y-2">
         <div>
-          <p className="text-sm font-medium text-muted-foreground">Common Use:</p>
-          <p className="text-sm">{fish.commonUse}</p>
+          <p className="text-sm font-medium text-muted-foreground">
+            Common Use
+          </p>
+          <p className="text-sm line-clamp-2">{fish.commonUse}</p>
         </div>
+
         <div>
-          <p className="text-sm font-medium text-muted-foreground">Available As:</p>
-          <p className="text-sm">{fish.availableAs.join(", ")}</p>
+          <p className="text-sm font-medium text-muted-foreground">
+            Available As
+          </p>
+          <p className="text-sm line-clamp-2">{fish.availableAs.join(", ")}</p>
         </div>
       </CardContent>
     </Card>
