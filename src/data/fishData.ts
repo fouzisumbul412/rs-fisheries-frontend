@@ -15,7 +15,7 @@ export const fishData: Fish[] = [
     name: "Grass Carp",
     shortCode: "RF-001",
     image:
-      "src/assets/Fishes/CG.webp",
+      "/Fishes/CG.webp",
     tags: ["Freshwater", "Popular"],
     commonUse: "Curries, Fry, Grilling",
     availableAs: ["Whole", "Cut Pieces", "Fresh"],
@@ -26,7 +26,7 @@ export const fishData: Fish[] = [
     name: "Grass Carp Medium",
     shortCode: "RF-002",
     image:
-      "src/assets/Fishes/MGC.png",
+      "/Fishes/MGC.png",
     tags: ["Freshwater"],
     commonUse: "Curries, Fry",
     availableAs: ["Whole", "Cut Pieces"],
@@ -37,7 +37,7 @@ export const fishData: Fish[] = [
     name: "Katla",
     shortCode: "RF-003",
     image:
-      "src/assets/Fishes/Katla.avif",
+      "/Fishes/Katla.avif",
     tags: ["High Demand"],
     commonUse: "Curries, Traditional Dishes",
     availableAs: ["Whole", "Steaks", "Fresh"],
@@ -48,7 +48,7 @@ export const fishData: Fish[] = [
     name: "Katla Medium",
     shortCode: "RF-004",
     image:
-      "src/assets/Fishes/mkatla.png",
+      "/Fishes/mkatla.png",
     tags: ["Popular"],
     commonUse: "Curries, Fry",
     availableAs: ["Cut Pieces", "Fresh"],
@@ -59,7 +59,7 @@ export const fishData: Fish[] = [
     name: "Mrigal Carp",
     shortCode: "RF-005",
     image:
-      "src/assets/Fishes/MC.png",
+      "/Fishes/MC.png",
     tags: ["Freshwater"],
     commonUse: "Curries, Light Fry",
     availableAs: ["Whole", "Cut Pieces"],
@@ -70,7 +70,7 @@ export const fishData: Fish[] = [
     name: "Medium Rohu Carp",
     shortCode: "RF-006",
     image:
-      "src/assets/Fishes/MRC.png",
+      "/Fishes/MRC.png",
     tags: ["Popular"],
     commonUse: "Curries, Fry",
     availableAs: ["Steaks", "Fresh"],
@@ -81,7 +81,7 @@ export const fishData: Fish[] = [
     name: "Prawn Medium",
     shortCode: "RF-007",
     image:
-      "src/assets/Fishes/PM.webp",
+      "/Fishes/PM.webp",
     tags: ["High Demand"],
     commonUse: "Curries, Fry, Stir-fry",
     availableAs: ["Whole", "Cleaned", "Fresh", "Frozen"],
@@ -92,7 +92,7 @@ export const fishData: Fish[] = [
     name: "Pangasius",
     shortCode: "RF-008",
     image:
-      "src/assets/Fishes/Pangasius.png",
+      "/Fishes/Pangasius.png",
     tags: ["Boneless"],
     commonUse: "Fillet Fry, Grilling",
     availableAs: ["Fillet", "Frozen"],
@@ -103,7 +103,7 @@ export const fishData: Fish[] = [
     name: "Roop Chand",
     shortCode: "RF-009",
     image:
-      "src/assets/Fishes/RC.png",
+      "/Fishes/RC.png",
     tags: ["Premium"],
     commonUse: "Fry, Shallow Fry",
     availableAs: ["Whole", "Cleaned"],
@@ -114,7 +114,7 @@ export const fishData: Fish[] = [
     name: "Rohu",
     shortCode: "RF-010",
     image:
-      "src/assets/Fishes/r.jpg",
+      "/Fishes/r.jpg",
     tags: ["Popular"],
     commonUse: "Curries, Fry",
     availableAs: ["Whole", "Steaks"],
@@ -125,7 +125,7 @@ export const fishData: Fish[] = [
     name: "Tilapia Medium",
     shortCode: "RF-011",
     image:
-      "src/assets/Fishes/TM.png",
+      "/Fishes/TM.png",
     tags: ["Farmed"],
     commonUse: "Grilling, Fry",
     availableAs: ["Whole", "Fillet"],
@@ -136,7 +136,7 @@ export const fishData: Fish[] = [
     name: "Tilapia Small",
     shortCode: "RF-012",
     image:
-      "src/assets/Fishes/TS.png",
+      "/Fishes/TS.png",
     tags: ["Budget"],
     commonUse: "Fry",
     availableAs: ["Whole"],
@@ -147,7 +147,7 @@ export const fishData: Fish[] = [
     name: "Vannamei Prawn",
     shortCode: "RF-013",
     image:
-      "src/assets/Fishes/VP.png",
+      "/Fishes/VP.png",
     tags: ["Export Quality", "Premium"],
     commonUse: "Curries, Fry, Grill",
     availableAs: ["Whole", "Peeled", "Deveined", "Frozen"],
@@ -158,7 +158,7 @@ export const fishData: Fish[] = [
     name: "Vietnam Rohu",
     shortCode: "RF-014",
     image:
-      "src/assets/Fishes/VR.png",
+      "/Fishes/VR.png",
     tags: ["Imported"],
     commonUse: "Curries",
     availableAs: ["Cut Pieces", "Frozen"],
@@ -169,7 +169,7 @@ export const fishData: Fish[] = [
     name: "White Prawn",
     shortCode: "RF-015",
     image:
-      "src/assets/Fishes/WP.png",
+      "/Fishes/WP.png",
     tags: ["Premium"],
     commonUse: "Fry, Curries, Continental",
     availableAs: ["Whole", "Cleaned", "Frozen"],
