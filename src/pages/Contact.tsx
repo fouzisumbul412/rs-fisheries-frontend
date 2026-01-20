@@ -41,37 +41,30 @@ const Contact = () => {
   });
   const onSubmit = async (values: FormValues) => {
     try {
-      const payload = {
-        type: "contact",
-        name: values.name,
-        email: values.email,
-        message: values.message,
-      };
+      const formData = new FormData();
+      formData.append("type", "contact");
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("message", values.message);
 
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbzVgE87L0JjYTBCl8O_tLAlt9dSVAb9oDqa_EIi3nbfM2A_uaka5JGmp0SrJ-eWhdgLDA/exec",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
+          body: formData, // ✅ NO headers
         },
       );
-
-      if (!response.ok) throw new Error(`Server responded ${response.status}`);
 
       const result = await response.json();
 
       if (result.success) {
         toast.success("Message sent successfully!");
         setIsSubmitted(true);
-        // form.reset() if you want
       } else {
         toast.error(result.error || "Something went wrong");
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       toast.error("Failed to send message");
     }
   };

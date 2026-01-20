@@ -65,46 +65,43 @@ const Enquiry = () => {
       notes: "",
     },
   });
- const onSubmit = async (values: FormValues) => {
-  try {
-    const payload = {
-      type: "quote",
-      name: values.name,
-      company: values.company,
-      phone: values.phone,
-      email: values.email,
-      market: values.market,
-      fishSelection: values.fishSelection,
-      quantity: values.quantity,
-      deliveryDate: values.deliveryDate || "",
-      notes: values.notes || ""
-    };
+  const onSubmit = async (values: FormValues) => {
+    try {
+      const formData = new FormData();
 
-    const response = await fetch("https://script.google.com/macros/s/AKfycbzVgE87L0JjYTBCl8O_tLAlt9dSVAb9oDqa_EIi3nbfM2A_uaka5JGmp0SrJ-eWhdgLDA/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-      // Remove mode: "no-cors" — we want to read the response
-    });
+      formData.append("type", "quote");
+      formData.append("name", values.name);
+      formData.append("company", values.company);
+      formData.append("phone", values.phone);
+      formData.append("email", values.email);
+      formData.append("market", values.market);
+      formData.append("fishSelection", values.fishSelection);
+      formData.append("quantity", values.quantity);
+      formData.append("deliveryDate", values.deliveryDate || "");
+      formData.append("notes", values.notes || "");
 
-    if (!response.ok) throw new Error(`Server responded ${response.status}`);
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzVgE87L0JjYTBCl8O_tLAlt9dSVAb9oDqa_EIi3nbfM2A_uaka5JGmp0SrJ-eWhdgLDA/exec",
+        {
+          method: "POST",
+          body: formData, // ✅ NO headers
+        },
+      );
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (result.success) {
-      toast.success("Quote request submitted!");
-      setIsSubmitted(true);
-      form.reset();
-    } else {
-      toast.error(result.error || "Something went wrong");
+      if (result.success) {
+        toast.success("Quote request submitted!");
+        setIsSubmitted(true);
+        form.reset();
+      } else {
+        toast.error(result.error || "Something went wrong");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to submit enquiry");
     }
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to submit — check console");
-  }
-};
+  };
 
   if (isSubmitted) {
     return (
