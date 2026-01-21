@@ -50,6 +50,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const Enquiry = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -67,6 +68,8 @@ const Enquiry = () => {
   });
   const onSubmit = async (values: FormValues) => {
     try {
+      setIsLoading(true);
+
       const formData = new FormData();
 
       formData.append("type", "quote");
@@ -84,7 +87,7 @@ const Enquiry = () => {
         "https://script.google.com/macros/s/AKfycbzVgE87L0JjYTBCl8O_tLAlt9dSVAb9oDqa_EIi3nbfM2A_uaka5JGmp0SrJ-eWhdgLDA/exec",
         {
           method: "POST",
-          body: formData, // ✅ NO headers
+          body: formData,
         },
       );
 
@@ -98,8 +101,9 @@ const Enquiry = () => {
         toast.error(result.error || "Something went wrong");
       }
     } catch (error) {
-      console.error(error);
       toast.error("Failed to submit enquiry");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -360,9 +364,23 @@ const Enquiry = () => {
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full">
-                      <Send className="mr-2 h-5 w-5" />
-                      Submit Enquiry
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <span className="h-5 w-5 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-5 w-5" />
+                          Submit Enquiry
+                        </>
+                      )}
                     </Button>
 
                     <p className="text-xs text-muted-foreground text-center">

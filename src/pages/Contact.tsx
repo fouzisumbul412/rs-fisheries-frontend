@@ -30,6 +30,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -41,6 +42,8 @@ const Contact = () => {
   });
   const onSubmit = async (values: FormValues) => {
     try {
+      setIsLoading(true);
+
       const formData = new FormData();
       formData.append("type", "contact");
       formData.append("name", values.name);
@@ -51,7 +54,7 @@ const Contact = () => {
         "https://script.google.com/macros/s/AKfycbzVgE87L0JjYTBCl8O_tLAlt9dSVAb9oDqa_EIi3nbfM2A_uaka5JGmp0SrJ-eWhdgLDA/exec",
         {
           method: "POST",
-          body: formData, // ✅ NO headers
+          body: formData,
         },
       );
 
@@ -60,12 +63,14 @@ const Contact = () => {
       if (result.success) {
         toast.success("Message sent successfully!");
         setIsSubmitted(true);
+        form.reset();
       } else {
         toast.error(result.error || "Something went wrong");
       }
     } catch (error) {
-      console.error(error);
       toast.error("Failed to send message");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -243,8 +248,20 @@ const Contact = () => {
                           )}
                         />
 
-                        <Button type="submit" size="lg" className="w-full">
-                          Send Message
+                        <Button
+                          type="submit"
+                          size="lg"
+                          className="w-full"
+                          disabled={isLoading}
+                        >
+                          {isLoading ? (
+                            <>
+                              <span className="h-5 w-5 mr-2 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                              Sending...
+                            </>
+                          ) : (
+                            "Send Message"
+                          )}
                         </Button>
                       </form>
                     </Form>
